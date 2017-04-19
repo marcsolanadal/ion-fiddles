@@ -57,14 +57,22 @@
       const App = () => (
         <Provider store={store}>
           <Router history={browserHistory}>
-            <Route path='/' component={Loler} />
+            <Route path='/' component={Root} />
           </Router>
         </Provider>
       );
 
-      const Loler = () => (
-        <div>Loler</div>
-      )
+      class Root extends Component {
+        render() {
+          return (
+            <div>Loler</div>
+          );
+        }
+      }
+
+      const mapStateT
+
+      const connectedRoot = connect(mapStateToProps, undefined)(Root);
 
       ReactDOM.render(
         <App />,
