@@ -1,0 +1,30 @@
+{
+  "name": "ion-fiddles",
+  "version": "1.0.0",
+  "description": "ION FIDDLES",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcsolanadal/ion-fiddles.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcsolanadal/ion-fiddles/issues"
+  },
+  "homepage": "https://github.com/marcsolanadal/ion-fiddles#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "connect-history-api-fallback": "^1.3.0",
+    "gulp": "^3.9.1",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "express": "^4.15.2",
+    "morgan": "^1.8.1",
+    "path": "^0.12.7"
+  }
+}

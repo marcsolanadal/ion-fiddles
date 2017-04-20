@@ -7,4 +7,4 @@ Install
 -------
 
 $ npm install -g browser-sync
-$ browser-sync start --server --files {NAME} --port 3333
+$ browser-sync start --server --files index.html main.js style.css --port 3333

@@ -1,6 +1,7 @@
 <html>
   <head>
-    <title>blank-fiddle-skel</title>
+    <title>multi-page-form-with-router</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
   </head>
   <body>
     <div id="root"></div>
@@ -11,75 +12,10 @@
     <script src="https://unpkg.com/react@15.5.4/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/5.0.3/react-redux.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/3.0.5/ReactRouter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/3.0.4/ReactRouter.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux-form/6.6.3/redux-form.min.js"></script>
 
-    <script type="text/babel">
-
-      const { Component } = React
-      const { createStore, applyMiddleware, combineReducers } = Redux
-      const { Provider, connect } = ReactRedux
-      const { Router, Route, browserHistory } = ReactRouter
-
-      // Middleware
-      const logger = store => next => action => {
-        console.log('dispatching', action)
-        let result = next(action)
-        console.log('next state', store.getState())
-        return result
-      }
-
-      const thunk = store => next => action =>
-        typeof action === 'function' ?
-          action(store.dispatch, store.getState) :
-          next(action)
-
-      // RootReducer
-      const rootReducer = combineReducers({
-        users: usersReducer
-      })
-
-      // Store
-      const store = createStore(
-        rootReducer,
-        applyMiddleware(...[
-          thunk,
-          logger
-        ])
-      )
-
-      // Other reducers
-
-      const usersReducer = (state = [], action) => {
-        return state;
-      }
-
-      const App = () => (
-        <Provider store={store}>
-          <Router history={browserHistory}>
-            <Route path='/' component={Root} />
-          </Router>
-        </Provider>
-      );
-
-      class Root extends Component {
-        render() {
-          return (
-            <div>Loler</div>
-          );
-        }
-      }
-
-      const mapStateT
-
-      const connectedRoot = connect(mapStateToProps, undefined)(Root);
-
-      ReactDOM.render(
-        <App />,
-        document.getElementById('root')
-      )
-
-    </script>
+    <script type="text/babel" src="main.js"></script>
 
   </body>
 </html>
