@@ -1,10 +1,18 @@
 const { Component } = React
-const { createStore, applyMiddleware, combineReducers } = Redux
+const { createStore, applyMiddleware, combineReducers, compose } = Redux
 const { Provider, connect } = ReactRedux
 const { Router, Route, browserHistory, IndexRoute, Link } = ReactRouter
-const { Field, reduxForm, submitting } = ReduxForm
+const { Field, reduxForm } = ReduxForm
+const formReducer = ReduxForm.reducer
+
+//------------------------------------------------------------------------------
+// REDUX
+//------------------------------------------------------------------------------
+
 
 // Middleware
+//------------------------------------------------------------------------------
+
 const logger = store => next => action => {
   console.log('dispatching', action)
   let result = next(action)
@@ -17,9 +25,26 @@ const thunk = store => next => action =>
     action(store.dispatch, store.getState) :
     next(action)
 
-// RootReducer
+
+// Reducers
+//------------------------------------------------------------------------------
+
+
+const forceUsersReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'ADD_FORCE_USER':
+      return [
+        ...state,
+        action.user
+      ];
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
-  forceUsers: forceUsersReducer
+  users: forceUsersReducer,
+  form: formReducer
 })
 
 // State shape
@@ -38,25 +63,42 @@ const rootReducer = combineReducers({
 */
 
 // Store
+//------------------------------------------------------------------------------
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   rootReducer,
-  applyMiddleware(...[
-    thunk,
-    logger
-  ])
+  composeEnhancers(
+    applyMiddleware(...[
+      thunk,
+      logger
+    ])
+  )
 )
 
-// Other reducers
 
-const forceUsersReducer = (state = [], action) => {
-  return state;
-}
+// Actions
+//------------------------------------------------------------------------------
+
+const addForceUser = (userData) => {
+  return {
+    type: 'ADD_FORCE_USER',
+    user: {
+      id: uuid.v4(),
+      ...userData
+    }
+  }
+};
+
+
+// REACT
+//------------------------------------------------------------------------------
 
 const App = () => (
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/' component={Header}>
-        <IndexRoute component={Dashboard} />
+        <IndexRoute component={ConnectedDashboard} />
         <Route path='/general' component={GeneralForm} />
         <Route path='/force' component={ForceForm} />
         <Route path='/apprentice' component={ApprenticeForm} />
@@ -73,11 +115,30 @@ const Header = ({ children }) => (
   </div>
 )
 
-const Dashboard = () => (
-  <ul>
-    <li><Link to='/general'>Add User</Link></li>
-  </ul>
-)
+let Dashboard = ({ users }) => {
+  const userList = users.map((user) =>
+    <li key={user.id}>{user.name}</li>
+  );
+  return (
+    <div>
+      <p>Menu:</p>
+      <ul>
+        <li><Link to='/general'>Add User</Link></li>
+      </ul>
+      <p>List of Force users:</p>
+      <ul>
+        {userList}
+      </ul>
+    </div>
+  )
+}
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.users
+  }
+}
+const ConnectedDashboard = connect(mapStateToProps, undefined)(Dashboard);
 
 // name, age
 let GeneralForm = () => {
@@ -85,11 +146,11 @@ let GeneralForm = () => {
     <form>
       <div>
         <label>Name</label>
-        <Field name="Name" component="input" type="text" placeholder="Name" />
+        <Field name="name" component="input" type="text" placeholder="Name" />
       </div>
       <div>
         <label>Age</label>
-        <Field name="Age" component="input" type="text" placeholder="Age" />
+        <Field name="age" component="input" type="text" placeholder="Age" />
       </div>
       <Link to="/force">Next</Link>
     </form>
@@ -97,6 +158,7 @@ let GeneralForm = () => {
 }
 GeneralForm = reduxForm({
   form: 'forceUserForm',
+  destroyOnUnmount: false,
 })(GeneralForm)
 
 // alignment, rank
@@ -105,11 +167,11 @@ let ForceForm = () => {
     <form>
       <div>
         <label>Alignment</label>
-        <Field name="Alignment" component="input" type="text" placeholder="Alignment" />
+        <Field name="alignment" component="input" type="text" placeholder="Alignment" />
       </div>
       <div>
         <label>Rank</label>
-        <Field name="Rank" component="input" type="text" placeholder="Rank" />
+        <Field name="rank" component="input" type="text" placeholder="Rank" />
       </div>
       <Link to="apprentice">Next</Link>
     </form>
@@ -117,6 +179,7 @@ let ForceForm = () => {
 }
 ForceForm = reduxForm({
   form: 'forceUserForm',
+  destroyOnUnmount: false,
 })(ForceForm)
 
 // selecting aprentice in case of being a master jedi or a sith lord
@@ -125,7 +188,7 @@ let ApprenticeForm = () => {
     <form>
       <div>
         <label>Apprentice</label>
-        <Field name="Apprentice" component="input" type="text" placeholder="Apprentice" />
+        <Field name="apprentice" component="input" type="text" placeholder="Apprentice" />
       </div>
       <Link to="submit">Next</Link>
     </form>
@@ -133,28 +196,41 @@ let ApprenticeForm = () => {
 }
 ApprenticeForm = reduxForm({
   form: 'forceUserForm',
+  destroyOnUnmount: false,
 })(ApprenticeForm)
 
-let Overview = () => {
+const submit = (userData) => {
+  const user = Object.assign({}, userData, {
+    id: uuid.v4()
+  });
+  store.dispatch(addForceUser(user))
+  browserHistory.push('/')
+};
+
+let Overview = ({ handleSubmit, submitting, values }) => {
   return (
-    <div>
+    <form onSubmit={handleSubmit(submit)}>
       <h2>Overview</h2>
       <p>May the force be with you...</p>
+      <div>rank: {values.rank}</div>
+      <div>name: {values.name}</div>
+      <div>age: {values.age}</div>
+      <div>apprentice: {values.apprentice}</div>
       <button type="submit" disabled={submitting}>Submit</button>
-    </div>
+    </form>
   )
 }
-Overview = reduxForm({
-  form: 'forceUserForm'
-})(Overview)
 
-const mapStateToProps = (state) => {
+const mapStateToPropsOverview = (state) => {
   return {
-
+    values: state.form.forceUserForm.values
   }
 }
 
-const connectedDashboard = connect(mapStateToProps, undefined)(Dashboard);
+Overview = connect(mapStateToPropsOverview, undefined)(Overview)
+Overview = reduxForm({
+  form: 'forceUserForm'
+})(Overview)
 
 ReactDOM.render(
   <App />,
