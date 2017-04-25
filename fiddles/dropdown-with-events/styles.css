@@ -2,6 +2,13 @@
   display: flex;
 }
 
+.input__opened {
+  background-color: white;
+}
+.input__closed {
+  background-color: lightgray;
+}
+
 .button {
   background-color: lime;
 }
