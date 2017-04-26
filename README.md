@@ -5,9 +5,9 @@ A list of fiddles or code examples.
 
 Legend
 ------
-:star: -> Completed with a solution that I'm proud of
-:poop: -> Completed but not proud of the solution
-:coffee: -> Fiddle not complete
+- :star: Completed with a solution that I'm proud of
+- :poop: Completed but not proud of the solution
+- :coffee: Fiddle not complete
 
 Fiddles
 -------
