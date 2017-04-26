@@ -5,6 +5,7 @@ const { Router, Route, browserHistory, IndexRoute, Link } = ReactRouter
 const { Field, reduxForm } = ReduxForm
 const formReducer = ReduxForm.reducer
 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -44,6 +45,7 @@ class App extends Component {
     return (
       <div className='container'>
         <input className={inputClass}
+          type='text'
           ref={(input) => { this.textInput = input; }}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
