@@ -3,8 +3,15 @@ ION FIDDLES
 
 A list of fiddles or code examples.
 
-Install
+Legend
+------
+:star: -> Completed with a solution that I'm proud of
+:poop: -> Completed but not proud of the solution
+:coffee: -> Fiddle not complete
+
+Fiddles
 -------
 
-$ npm install -g browser-sync
-$ browser-sync start --server --files index.html main.js style.css --port 3333
+- async-thunks :star:
+- dropdown-with-events :poop:
+- multi-page-form-with-route :coffee:
