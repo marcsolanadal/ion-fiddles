@@ -9,7 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      focused: false
+      focused: false,
+      submited: false
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
@@ -18,23 +19,27 @@ class App extends Component {
 
   handleClick(e) {
     if (this.state.focused) {
+      this.setState({ focused: false, submitted: true })
       console.log('close and submit')
-      this.setState({ focused: close })
     } else {
-      this.setState({ focused: true })
       //this.nameInput.focus()
+      this.setState({ focused: true, submitted: false })
       console.log('open and focus')
     }
   }
 
   handleBlur() {
-    console.log(document.activeElement.id)
-    this.setState({ focused: false })
-    console.log('onblur')
+    if (!this.state.submitted) {
+      this.setState({ focused: false })
+      console.log('onblur')
+    }
   }
 
   handleFocus() {
-    this.setState({ focused: true })
+    this.setState({
+      focused: true,
+      submitted: false
+    })
     console.log('onfocus')
   }
 
