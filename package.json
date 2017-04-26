@@ -6,7 +6,7 @@
   "config": {
     "hostname": "localhost",
     "port": "3007",
-    "fiddle": "dropdown-with-events"
+    "fiddle": "async-thunks"
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run browser-sync\"",
