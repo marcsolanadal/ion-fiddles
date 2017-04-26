@@ -7,9 +7,9 @@ const { config } = require('./package.json');
 const { fiddle, hostname, port } = config;
 
 // Setting up fiddle path
-var fiddlePath = path.join(__dirname, 'fiddles', fiddle);
+const fiddlePath = path.join(__dirname, 'fiddles', fiddle);
 
-var app = express();
+const app = express();
 
 // Minimal logging
 app.use(morgan('tiny'));
