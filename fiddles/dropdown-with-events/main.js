@@ -22,7 +22,6 @@ class App extends Component {
       this.setState({ focused: false, submitted: true })
       console.log('close and submit')
     } else {
-      //this.nameInput.focus()
       this.setState({ focused: true, submitted: false })
       console.log('open and focus')
     }
