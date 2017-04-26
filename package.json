@@ -4,14 +4,14 @@
   "description": "ION FIDDLES",
   "main": "index.js",
   "config": {
-    "server": "localhost",
+    "hostname": "localhost",
     "port": "3007",
     "fiddle": "dropdown-with-events"
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run browser-sync\"",
     "server": "nodemon ./server.js",
-    "browser-sync": "browser-sync start --proxy \"%npm_package_config_server%:%npm_package_config_port%\" --files ."
+    "browser-sync": "browser-sync start --proxy \"%npm_package_config_hostname%:%npm_package_config_port%\" --files ."
   },
   "repository": {
     "type": "git",

@@ -1,10 +1,13 @@
-var express = require('express');
-var path = require('path');
-var morgan = require('morgan');
-var config = require('./package.json').config;
+const express = require('express');
+const path = require('path');
+const morgan = require('morgan');
+const { config } = require('./package.json');
+
+// Getting the config variables
+const { fiddle, hostname, port } = config;
 
 // Setting up fiddle path
-var fiddlePath = path.join(__dirname, 'fiddles', config.fiddle);
+var fiddlePath = path.join(__dirname, 'fiddles', fiddle);
 
 var app = express();
 
@@ -19,6 +22,6 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(fiddlePath, 'index.html'));
 });
 
-app.listen(config.port, config.server, function () {
-  console.log('Example app listening on port ' + config.server + ':' + config.port + '...');
+app.listen(config.port, config.server, function() {
+  console.log(`Fiddle ${fiddle} running on ${hostname}:${port}...`);
 });
