@@ -15,3 +15,4 @@ Fiddles
 - async-thunks :star2:
 - dropdown-with-events :poop:
 - multi-page-form-with-route :coffee:
+- error-handling :coffee:
