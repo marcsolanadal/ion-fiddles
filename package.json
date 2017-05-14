@@ -4,16 +4,25 @@
   "description": "ION FIDDLES",
   "main": "index.js",
   "config": {
-    "hostname": "localhost",
-    "port": "3007",
-    "apiPort": "3008",
-    "fiddle": "error-handling"
+    "fiddle": "combined-normalized-reducers",
+    "front": {
+      "hostname": "localhost",
+      "port": "3000"
+    },
+    "back": {
+      "hostname": "localhost",
+      "port": "4000"
+    },
+    "database": {
+      "hostname": "192.168.2.59",
+      "port": "6379"
+    }
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run browser-sync\" \"npm run api\"",
     "server": "nodemon ./server.js",
-    "browser-sync": "browser-sync start --proxy \"%npm_package_config_hostname%:%npm_package_config_port%\" --files .",
-    "api": "nodemon ./api/server.js"
+    "browser-sync": "browser-sync start --proxy \"%npm_package_config_front_hostname%:%npm_package_config_front_port%\" --files .",
+    "api": "nodemon ./api.js"
   },
   "repository": {
     "type": "git",

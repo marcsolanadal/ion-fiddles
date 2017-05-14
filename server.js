@@ -1,18 +1,21 @@
 const express = require('express');
 const path = require('path');
-const morgan = require('morgan');
-const { config } = require('./package.json');
 
 // Getting the config variables
-const { fiddle, hostname, port } = config;
+const {
+  config: {
+    fiddle,
+    front: {
+      hostname,
+      port
+    }
+  }
+} = require('./package.json');
 
 // Setting up fiddle path
 const fiddlePath = path.join(__dirname, 'fiddles', fiddle);
 
 const app = express();
-
-// Minimal logging
-app.use(morgan('tiny'));
 
 // Serve static assets
 app.use(express.static(fiddlePath));
@@ -22,6 +25,6 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(fiddlePath, 'index.html'));
 });
 
-app.listen(config.port, config.server, function() {
+app.listen(port, hostname, function() {
   console.log(`Fiddle ${fiddle} running on ${hostname}:${port}...`);
 });

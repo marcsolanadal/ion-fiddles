@@ -16,3 +16,4 @@ Fiddles
 - dropdown-with-events :poop:
 - multi-page-form-with-route :coffee:
 - error-handling :coffee:
+- combined-normalized-reducers :coffee:
