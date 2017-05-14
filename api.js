@@ -29,7 +29,7 @@ app.use(session)
 app.use('/token', auth)
 
 // Loading all the controlers inside the fiddle controller folder
-const fiddleControllers = path.join(__dirname, 'fiddles', fiddle, 'controllers');
+const fiddleControllers = path.join(__dirname, 'fiddles', fiddle, 'api/controllers');
 fs.readdir(fiddleControllers, (err, files) => {
   if (files === undefined) {
     console.error('No controllers found...')
