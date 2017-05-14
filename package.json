@@ -6,12 +6,14 @@
   "config": {
     "hostname": "localhost",
     "port": "3007",
+    "apiPort": "3008",
     "fiddle": "error-handling"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run browser-sync\"",
+    "start": "concurrently \"npm run server\" \"npm run browser-sync\" \"npm run api\"",
     "server": "nodemon ./server.js",
-    "browser-sync": "browser-sync start --proxy \"%npm_package_config_hostname%:%npm_package_config_port%\" --files ."
+    "browser-sync": "browser-sync start --proxy \"%npm_package_config_hostname%:%npm_package_config_port%\" --files .",
+    "api": "nodemon ./api/server.js"
   },
   "repository": {
     "type": "git",
@@ -29,8 +31,11 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "morgan": "^1.8.1",
     "path": "^0.12.7",
+    "redis": "^2.7.1",
     "uuid": "^3.0.1"
   }
 }
