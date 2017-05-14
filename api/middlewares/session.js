@@ -7,14 +7,19 @@ module.exports = function(req, res, next) {
   if (req.originalUrl === '/token' && req.method === 'POST') {
     next()
   } else {
-    const { user, token } = JSON.parse(req.headers.session)
-    db.get(user, (err, result) => {
-      if (result === token) {
-        req.session = { user, token }
-        next()
-      } else {
-        res.status(500).send('invalid token')
-      }
-    })
+    // FIXME: Why we have an aditional OPTIONS method call?
+    if (req.headers.session === undefined) {
+      res.send()
+    } else {
+      const { user, token } = JSON.parse(req.headers.session)
+      db.get(user, (err, result) => {
+        if (result === token) {
+          req.session = { user, token }
+          next()
+        } else {
+          res.status(500).send('invalid token')
+        }
+      })
+    }
   }
 }

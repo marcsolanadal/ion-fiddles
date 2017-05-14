@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
   if (password === data.users[user].password) {
     const token = crypto.randomBytes(64).toString('hex')
     db.set(user, token)
-    res.send(token)
+    res.send(JSON.stringify({ token }))
   } else {
     res.status(500).send('invalid login')
   }

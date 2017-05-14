@@ -5,6 +5,7 @@ const fs = require('fs')
 const path = require('path')
 
 const { db } = require('./api/db')
+const cors = require('./api/middlewares/cors')
 const session = require('./api/middlewares/session')
 const auth = require('./api/controllers/auth')
 const {
@@ -21,8 +22,9 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use((req, res, next) => setTimeout(next, 300));
 app.use(morgan('dev'))
+app.use((req, res, next) => setTimeout(next, 300));
+app.use(cors)
 app.use(session)
 
 // Shared routes between fiddles
