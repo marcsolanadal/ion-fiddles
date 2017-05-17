@@ -13,6 +13,7 @@ Fiddles
 -------
 
 - async-thunks :star2:
+- normalize-array-of-objects :star2:
 - dropdown-with-events :poop:
 - multi-page-form-with-route :coffee:
 - error-handling :coffee:
