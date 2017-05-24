@@ -5,7 +5,6 @@ const { Router, Route, browserHistory, IndexRoute, Link } = ReactRouter
 const { Field, reduxForm } = ReduxForm
 const formReducer = ReduxForm.reducer
 
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -13,12 +12,9 @@ class App extends Component {
       focused: false,
       avoidBlur: false
     }
-    this.handleClick = this.handleClick.bind(this)
-    this.handleBlur = this.handleBlur.bind(this)
-    this.handleFocus = this.handleFocus.bind(this)
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     if (this.state.focused) {
       this.setState({ focused: false, avoidBlur: true })
       console.log('close and submit')
@@ -28,14 +24,14 @@ class App extends Component {
     }
   }
 
-  handleBlur() {
+  handleBlur = () => {
     if (!this.state.avoidBlur) {
       this.setState({ focused: false })
       console.log('onblur')
     }
   }
 
-  handleFocus() {
+  handleFocus = () => {
     this.setState({ focused: true, avoidBlur: false })
     console.log('onfocus')
   }
