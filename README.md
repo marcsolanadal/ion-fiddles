@@ -14,7 +14,8 @@ Fiddles
 
 - async-thunks :star2:
 - normalize-array-of-objects :star2:
-- dropdown-with-events :poop:
+- dropdown-with-events :star2:
 - multi-page-form-with-route :coffee:
 - error-handling :coffee:
 - combined-normalized-reducers :coffee:
+- react-dropdown :coffee:

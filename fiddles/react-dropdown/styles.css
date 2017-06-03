@@ -1,0 +1,64 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.label {
+  margin: 0 15px 0 0;
+}
+
+.selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  font-size: 24px;
+  width: 200px;
+  padding: 10px;
+  background-color: #f4f8ff;
+  border-bottom: 2px solid black;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+  background-color: gray;
+}
+
+.placeholder {
+  font-size: 14px;
+  color: gray;
+}
+
+.current {
+  height: 30px;
+}
+
+.expanded {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 0px;
+  width: 200px;
+  background-color: #f4f8ff;
+  color: gray;
+  font-size: 24px;
+  transition: height 250ms ease;
+  z-index: 99;
+}
+
+.item {
+  padding: 10px 0;
+  background-color: white;
+}

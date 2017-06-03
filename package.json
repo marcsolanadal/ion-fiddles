@@ -4,7 +4,7 @@
   "description": "ION FIDDLES",
   "main": "index.js",
   "config": {
-    "fiddle": "normalize-array-of-objects",
+    "fiddle": "react-dropdown",
     "front": {
       "hostname": "localhost",
       "port": "3000"
@@ -37,7 +37,8 @@
   "devDependencies": {
     "browser-sync": "^2.18.8",
     "concurrently": "^3.4.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "tape": "^4.6.3"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
