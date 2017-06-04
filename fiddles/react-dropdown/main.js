@@ -13,11 +13,14 @@ class App extends Component {
       <ForceUser name='Anakin' alignment='Jedi' />,
       <ForceUser name='Darth Sidious' alignment='Sith' />,
       <ForceUser name='Darth Moul' alignment='Sith' />,
+      <ForceUser name='Asoka' alignment='Neutral' />,
+      <ForceUser name='Yoda' alignment='Jedi' />,
+      <ForceUser name='Darth Vader' alignment='Sith' />,
     ]
     return (
       <div className='form'>
         <Dropdown customClick={(params) => { console.log('custom click!', params) }} items={usersSample} />
-        <Dropdown placeholder='default' default={2} items={usersSample2} />
+        <Dropdown placeholder='default' defaultIndex={1} items={usersSample2} />
         <Dropdown placeholder='force users' items={usersSample2} />
         <Dropdown placeholder='force users' label='label' items={usersSample2} />
       </div>
@@ -36,7 +39,7 @@ const ForceUser = ({ name, alignment }) => {
 class Dropdown extends Component {
 
   static propTypes = {
-    default: PropTypes.number,
+    defaultIndex: PropTypes.number,
     label: PropTypes.string,
     placeholder: PropTypes.string,
     items: PropTypes.arrayOf(
@@ -50,8 +53,10 @@ class Dropdown extends Component {
 
   constructor(props) {
     super(props)
+    const { defaultIndex, items } = this.props
+    const index = (defaultIndex < items.length && defaultIndex >= 0) ? defaultIndex : 0
     this.state = {
-      selected: this.props.default || 0,
+      selected: index,
       opened: false
     }
   }
@@ -69,6 +74,14 @@ class Dropdown extends Component {
   render() {
     const { items, placeholder, label, customClick } = this.props
     const { opened, selected } = this.state
+    const arrowClass = classNames({
+      'icon-caret-down': !opened,
+      'icon-caret-up': opened
+    })
+    const listClass = classNames('list', {
+      'list__opened': opened,
+      'list__closed': !opened
+    })
     return (
       <div
         className='dropdown'
@@ -84,10 +97,10 @@ class Dropdown extends Component {
               {placeholder && <div className='placeholder'>{placeholder}</div>}
               <div className='current'>{items[selected]}</div>
             </div>
-            <div className='icon-chevron-down' />
+            <div className={arrowClass} />
           </div>
 
-          {opened && <ul className='expanded'>
+          {<ul className={listClass}>
             {items.map((item, i) => {
               if (i !== selected) {
                 return <DropdownItem

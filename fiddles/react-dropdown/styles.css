@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -44,21 +48,29 @@
   height: 30px;
 }
 
-.expanded {
+.list {
   position: relative;
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 0px;
   width: 200px;
-  background-color: #f4f8ff;
+  height: 0px;
   color: gray;
   font-size: 24px;
-  transition: height 250ms ease;
+  transform-origin: top right;
   z-index: 99;
+}
+.list__opened {
+  transform: scaleY(1);
+  transition: transform 200ms ease;
+}
+.list__closed {
+  transform: scaleY(0);
+  transition: transform 100ms ease;
 }
 
 .item {
   padding: 10px 0;
   background-color: white;
+  width: 200px;
 }
