@@ -4,7 +4,7 @@
   "description": "ION FIDDLES",
   "main": "index.js",
   "config": {
-    "fiddle": "react-dropdown",
+    "fiddle": "ecs-tutorial",
     "front": {
       "hostname": "localhost",
       "port": "3000"
