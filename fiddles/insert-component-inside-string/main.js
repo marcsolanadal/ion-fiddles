@@ -11,7 +11,7 @@ class CustomLink extends Component {
   }
 }
 
-const str = 'Hello %1 this %2 %3 and is so %4!!!'
+const str = 'Hello %1 this %2%3 and is so %4!!!'
 const arr = [
   'Frodo',
   <CustomLink to='/rocks' text='link' />,
@@ -20,10 +20,7 @@ const arr = [
 ]
 
 const format = (str, arr) => {
-  return str
-    .split(/\%[0-9]+/)
-    .filter(i => i !== '')
-    .map((item, i) => [item, arr[i]])
+  return str.split(/\%[0-9]+/).map((item, i) => [item, arr[i]])
 }
 
 class App extends Component {
