@@ -21,10 +21,10 @@ Fiddles
 - error-handling :coffee:
 - combined-normalized-reducers :coffee:
 - ecs-tutorial :coffee:
-- react-implementation :
 
 Notes
 -----
 
 - react
-  - component-element-instance :white_check_mark:
+  - component-element-instance
+  - one-way-data-binding
