@@ -4,7 +4,7 @@
   "description": "ION FIDDLES",
   "main": "index.js",
   "config": {
-    "fiddle": "ecs-tutorial",
+    "fiddle": "insert-component-inside-string",
     "front": {
       "hostname": "localhost",
       "port": "3000"
