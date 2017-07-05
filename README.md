@@ -16,6 +16,7 @@ Fiddles
 - normalize-array-of-objects :star2:
 - dropdown-with-events :star2:
 - insert-component-inside-string :star2:
+- component-style-composition :star2:
 - react-dropdown :coffee: - (add ids and scroll)
 - multi-page-form-with-route :coffee:
 - error-handling :coffee:

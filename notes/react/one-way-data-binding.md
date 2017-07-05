@@ -24,8 +24,8 @@ model -> updated -> UI
 ### Common mistakes
 
 
-In React and Redux when using thunks is to call the thunk action and use the
-returned promise to get the data and do some operation.
+In React and Redux when using thunks is a common mistake to call the thunk action
+and use the returned promise to get the data and do some operation.
 
 ```javascript
 # LoginActions.js
