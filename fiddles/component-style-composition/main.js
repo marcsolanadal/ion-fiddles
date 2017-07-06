@@ -52,8 +52,8 @@ class App extends Component {
       <div>
         <h1>Force Users</h1>
         <SithButton>Darth Sidious</SithButton>
-        <GrayJediButton>Kuai'gon gin</GrayJediButton>
-        <JediButton>Obi-wan kenobi</JediButton>
+        <GrayJediButton>Qui-Gon Gin</GrayJediButton>
+        <JediButton>Obi-Wan Kenobi</JediButton>
         <JediButton onClick={handleSithClick}>Anakin</JediButton>
         <NoForceUser onClick={handleNoForceClick}>Han Solo</NoForceUser>
       </div>
