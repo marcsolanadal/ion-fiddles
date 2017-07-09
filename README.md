@@ -29,3 +29,6 @@ Notes
 - react
   - component-element-instance
   - one-way-data-binding
+  
+- fp
+  - functions
