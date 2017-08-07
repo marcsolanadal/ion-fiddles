@@ -22,6 +22,7 @@ Fiddles
 - error-handling :coffee:
 - combined-normalized-reducers :coffee:
 - ecs-tutorial :coffee:
+- css-sprites :coffee:
 
 Notes
 -----
@@ -29,6 +30,6 @@ Notes
 - react
   - component-element-instance
   - one-way-data-binding
-  
+
 - fp
   - functions

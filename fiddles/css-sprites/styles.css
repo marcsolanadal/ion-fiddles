@@ -1,0 +1,111 @@
+
+.chimster {
+  width: 102px;
+  height: 75px;
+  background-image: url(sprites/runner-sprite-no-padding.png);
+  background-repeat: no-repeat;
+  animation: run 0.5s steps(15) infinite;
+}
+
+@keyframes run {
+  0% { background-position: 0; }
+  100% { background-position: -1530px 0; }
+}
+
+/*
+.chimster-RunShadow0001 {
+    width: 102px;
+    height: 75px;
+    background-position: 0 0;
+}
+
+.chimster-RunShadow0002 {
+    width: 102px;
+    height: 75px;
+    background-position: -102px 0;
+}
+
+.chimster-RunShadow0003 {
+    width: 102px;
+    height: 75px;
+    background-position: -204px 0;
+}
+
+.chimster-RunShadow0004 {
+    width: 102px;
+    height: 75px;
+    background-position: -306px 0;
+}
+
+.chimster-RunShadow0005 {
+    width: 102px;
+    height: 75px;
+    background-position: -408px 0;
+}
+
+.chimster-RunShadow0006 {
+    width: 102px;
+    height: 75px;
+    background-position: -510px 0;
+}
+
+.chimster-RunShadow0007 {
+    width: 102px;
+    height: 75px;
+    background-position: -612px 0;
+}
+
+.chimster-RunShadow0008 {
+    width: 102px;
+    height: 75px;
+    background-position: -714px 0;
+}
+
+.chimster-RunShadow0009 {
+    width: 102px;
+    height: 75px;
+    background-position: -816px 0;
+}
+
+.chimster-RunShadow0010 {
+    width: 102px;
+    height: 75px;
+    background-position: -918px 0;
+}
+
+.chimster-RunShadow0011 {
+    width: 102px;
+    height: 75px;
+    background-position: -1020px 0;
+}
+
+.chimster-RunShadow0012 {
+    width: 102px;
+    height: 75px;
+    background-position: -1122px 0;
+}
+
+.chimster-RunShadow0013 {
+    width: 102px;
+    height: 75px;
+    background-position: -1224px 0;
+}
+
+.chimster-RunShadow0014 {
+    width: 102px;
+    height: 75px;
+    background-position: -1326px 0;
+}
+
+.chimster-RunShadow0015 {
+    width: 102px;
+    height: 75px;
+    background-position: -1428px 0;
+}
+
+.chimster-RunShadow0016 {
+    width: 102px;
+    height: 75px;
+    background-position: -1530px 0;
+}
+*/

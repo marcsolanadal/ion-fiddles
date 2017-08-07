@@ -4,7 +4,7 @@
   "description": "ION FIDDLES",
   "main": "index.js",
   "config": {
-    "fiddle": "component-style-composition",
+    "fiddle": "css-sprites",
     "front": {
       "hostname": "localhost",
       "port": "3000"
@@ -46,6 +46,7 @@
     "morgan": "^1.8.1",
     "path": "^0.12.7",
     "redis": "^2.7.1",
+    "sprity": "^1.0.8",
     "uuid": "^3.0.1"
   }
 }
