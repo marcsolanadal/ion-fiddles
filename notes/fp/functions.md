@@ -41,3 +41,11 @@ to as a **varidic function**.
 **Imperative code** focus on how to get the outcome with different steps.
 
 *Declarative code often communicates more cleanly than imperative code.*
+
+The *...* operator can be used to *gather* or *spread* depending on the context
+where it's called. In a value-list it *spreads* and in an assignment position it *gathers*
+
+```javascript
+const test = (...args) => {} // gather
+test(...arr) // spread
+```
