@@ -1,0 +1,28 @@
+.firstSolution {
+  color: tomato;
+}
+
+.button {
+  height: 30px;
+  width: 200px;
+  color: white;
+  background-color: tomato;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.secondSolution {
+  color: pink;
+}
+.button2 {
+  height: 30px;
+  width: 200px;
+  color: white;
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
